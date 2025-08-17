@@ -1,0 +1,132 @@
+
+/* wSeiira — Şık & Modern Tek Sayfa (çoklu sayfa sürümü)
+   Tema renkleri ve düzeni: styles.css değişkenleri ve kurallarına göre.
+*/
+:root{
+  --bg: #0b0f1a;
+  --panel: #0f1424;
+  --muted: #9aa4b2;
+  --txt: #e6ecff;
+  --acc: #6cf3ff;        /* neon cyan */
+  --acc2: #ff4ecd;       /* neon magenta */
+  --acc3: #8fff5a;       /* neon lime */
+  --glow-soft: 0 0 18px rgba(108,243,255,.45), 0 0 48px rgba(255,78,205,.25);
+  --glow-strong: 0 0 8px var(--acc), 0 0 22px var(--acc), 0 0 42px var(--acc2);
+  --radius: 20px;
+  --radius-sm: 14px;
+  --maxw: 1200px;
+  --shadow: 0 10px 30px rgba(0,0,0,.35);
+  --grad: radial-gradient(1200px 800px at 80% -10%, rgba(108,243,255,.08), transparent 60%),
+           radial-gradient(1000px 700px at 10% 120%, rgba(255,78,205,.07), transparent 60%),
+           linear-gradient(180deg, #0b0f1a 0%, #0a0e19 100%);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--txt);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";scroll-behavior:smooth}
+a{color:var(--acc);text-decoration:none}
+a:hover{filter:brightness(1.1)}
+img{max-width:100%;display:block}
+.container{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:20px}
+.grid{display:grid;gap:22px}
+.btn{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,var(--acc) 0%, var(--acc2) 100%);color:#001018;padding:12px 18px;border-radius:999px;font-weight:700;box-shadow:var(--glow-soft);border:0;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 0 12px var(--acc),0 0 30px var(--acc2)}
+.btn.ghost{background:transparent;border:1.5px solid rgba(108,243,255,.6);color:var(--txt)}
+.btn.ghost:hover{box-shadow:var(--glow-soft)}
+
+header.site{
+  position:sticky;top:0;z-index:50;background:rgba(11,15,26,.75);backdrop-filter:saturate(140%) blur(10px);
+  border-bottom:1px solid rgba(108,243,255,.15)
+}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{display:flex;align-items:center;gap:12px}
+.brand .logo{width:32px;height:32px;filter:drop-shadow(0 0 8px rgba(108,243,255,.65))}
+.brand strong{letter-spacing:.5px}
+.nav a{padding:10px 12px;border-radius:12px;color:var(--txt)}
+.nav a.active, .nav a:hover{background:rgba(108,243,255,.08)}
+
+.burger{display:none;background:none;border:0;color:var(--txt);font-size:22px}
+.navlinks{display:flex;gap:6px;align-items:center}
+
+@media (max-width: 860px){
+  .burger{display:block}
+  .navlinks{display:none;position:absolute;right:20px;top:60px;background:var(--panel);padding:14px;border-radius:var(--radius);box-shadow:var(--shadow);border:1px solid rgba(108,243,255,.12);flex-direction:column;min-width:220px}
+  .navlinks.open{display:flex}
+}
+
+.hero{
+  position:relative;isolation:isolate;background:var(--grad);padding:84px 0 64px;
+}
+.hero:before, .hero:after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none
+}
+.hero h1{font-size:clamp(28px,6vw,56px);line-height:1.05;margin:0 0 16px;text-shadow:var(--glow-soft)}
+.hero p{font-size:clamp(16px,2.6vw,20px);color:var(--muted);max-width:760px}
+
+.section{padding:64px 0}
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.0));
+  border:1px solid rgba(108,243,255,.12);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.card.pad{padding:22px}
+.card.neon{box-shadow:var(--glow-soft);border-color:rgba(108,243,255,.25)}
+.badge{display:inline-block;border:1px solid rgba(108,243,255,.35);border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
+
+.footer{border-top:1px solid rgba(108,243,255,.12);padding:28px 0;color:var(--muted)}
+
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+
+.features{grid-template-columns:repeat(3,1fr)}
+@media (max-width: 900px){ .features{grid-template-columns:1fr}}
+
+.glow{
+  text-shadow: 0 0 6px rgba(108,243,255,.9), 0 0 18px rgba(255,78,205,.6);
+}
+.neon-border{
+  box-shadow: 0 0 0 1px rgba(108,243,255,.35), inset 0 0 40px rgba(108,243,255,.06), var(--glow-soft);
+}
+.tag{font-size:12px;padding:6px 10px;border-radius:999px;background:rgba(108,243,255,.12);border:1px solid rgba(108,243,255,.28);color:#bdefff}
+
+.section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}
+.section-title h2{margin:0;font-size:clamp(22px,4.5vw,34px)}
+.section-title p{margin:0;color:var(--muted)}
+
+.projects{grid-template-columns:repeat(3,1fr)}
+@media (max-width: 1024px){ .projects{grid-template-columns:repeat(2,1fr)}}
+@media (max-width: 640px){ .projects{grid-template-columns:1fr}}
+
+.contact-grid{grid-template-columns:2fr 1fr}
+@media (max-width: 940px){ .contact-grid{grid-template-columns:1fr}}
+
+/* Reveal on scroll */
+.reveal{opacity:0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease}
+.reveal.show{opacity:1; transform:none}
+.delay-1{transition-delay:.1s}.delay-2{transition-delay:.2s}.delay-3{transition-delay:.3s}
+
+/* Fancy underline */
+.u{position:relative}
+.u:after{content:"";position:absolute;left:0;bottom:-4px;width:100%;height:2px;background:linear-gradient(90deg,var(--acc),transparent)}
+
+/* Neon lines background */
+.bg-lines{
+  background-image: repeating-linear-gradient(135deg, rgba(108,243,255,.06) 0 2px, transparent 2px 32px),
+                    repeating-linear-gradient(45deg, rgba(255,78,205,.05) 0 2px, transparent 2px 26px);
+  border-radius: var(--radius);
+}
+
+/* Forms */
+.input, .textarea{
+  width:100%;padding:12px 14px;border-radius:12px;background:#0b1223;border:1px solid rgba(108,243,255,.2);
+  color:var(--txt);outline:none;transition:border-color .2s ease, box-shadow .2s ease
+}
+.input:focus, .textarea:focus{border-color:var(--acc);box-shadow:0 0 0 4px rgba(108,243,255,.1)}
+.textarea{min-height:140px;resize:vertical}
+label{display:block;margin-bottom:8px;color:#bfdfff;font-size:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width: 640px){ .form-row{grid-template-columns:1fr}}
+
+/* Utility */
+.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mt-5{margin-top:22px}.mt-6{margin-top:28px}
+.center{text-align:center}
